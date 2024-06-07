@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+
+{%block title%}
+Contact
+{%endblock%}
+
+{%block body%}
+<div class="container">
+    <h1>Registration From</h1>
+    <ul class="messages">
+        {% for msg in messages%}
+        <li>
+            <div class="alert alert-{{msg.level_tag}}" role="alert">
+                {{msg.message}}
+            </div>
+
+        </li>
+        {%endfor%}
+    </ul>
+        <form action="{% url 'adduser'%}" method="post"> 
+            {% csrf_token %} 
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">User Name</label>  
+                {{form.username}}
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              {{form.password}}
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">email</label>
+                {{form.email}}
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Phone</label>
+                {{form.phone}}
+            </div>
+         
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+     
+   
+</div>
+
+{%endblock%}

@@ -1,0 +1,442 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>job application 4</title>
+    <script src="{% static 'js/job.js' %}"></script>
+   
+
+<style>
+.submit {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left: 450%;
+  margin-top: 46%;
+  margin-bottom: 50px;
+  background-color: #04AA6D;
+}
+.reset{
+    border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left: 700%;
+  margin-top: 46%;
+  margin-bottom: 50px;
+  background-color: #04AA6D;
+
+}
+td{
+    padding: 10px;
+    /* border-spacing: 50px; */
+
+}
+h1{
+    text-align: center;
+    justify-content: center;
+    color:brown;
+}
+</style>
+</head>
+
+<body>
+    <h1>Job application form 4</h1>
+    <form method="POST" id="form" onsubmit="return formvalidation()">
+        <center>
+            <div class="basicdetatilsdiv" id="basicdetatilsdiv">
+                <fieldset style="width: 50%;">
+                    <legend><b>Basic Details</b></legend>
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <label for="fname" class="fname">First Name</label>
+                                {{form.first_name}}
+
+                            </td>
+                            <td>
+                                <label for="lname" class="lname">Last Name</label>
+                                {{form.last_name}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="address1" class="address1">Address1</label>
+                                {{form.address1}}
+
+                            </td>
+                            <td>
+                                <label for="address2" class="address2">Address2</label>
+                                {{form.address2}}
+
+                            </td>
+                        </tr>   
+                        <tr>
+                            <td>
+                                <label for="gender" class="gender" name="gender">Gender:</label>
+                                {{form.gender}}
+
+                            </td>
+                            <td> 
+                                <label for="designation">designation:</label>
+                                {{form.designation}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="email"  class="email">Email:</label>
+                                {{form.email}}
+                                
+                            </td>
+                            <td>
+                                <label for="city" class="city">city:</label>
+                                {{form.city}}
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="states">state:</label>
+                                {{form.state}}
+
+                            </td>
+                            <td>
+                                <label for="DateOfBirth">DateOfBirth:</label>
+                                {{form.birthdate}}
+
+                            </td>
+                            <td>
+                                <label for="phone">relationship : </label>
+                                {{form.relationship_status}}
+
+                            </td>
+                            <td>
+                                <label for="phone">Phone : </label>
+                                {{form.phone}}
+
+                            </td>
+                            <td>
+                                <label for="phone">zipcode : </label>
+                                {{form.zipcode}}
+
+                            </td>
+                        </tr>
+                    </table>
+
+                </fieldset>
+            </div>
+            <div class="edudetailsdiv" id="edudetailsdiv" style="display: none;">
+                <fieldset style="width: 50%;">
+                    <legend><b>Education Details</b></legend>
+                    <table id="education">
+                
+                        <tr> 
+                            <td><label for="ssc"> SSC result</label></td> 
+                        </tr>
+                        <tr>
+                            <input type="hidden" name="edudetailid"  value="">
+                            <td> <label for="boardname">Name of board :</label></td> 
+                            <td><input type="text" id="boardname1" class="boardname" name="nob" value="" placeholder="ex.GSEB">
+                            <span id="ssc_error1" style="color: red;"></span></td> 
+
+                            <td> <label for="passingyearssc"> Passing Year :</label></td>
+                            <td><input type="text" id="passingyearssc" name="passingyear" class="year" placeholder="ex.2014" value=""> 
+                            <div id="ssc_error2" style="color: red;"></div></td> 
+
+                            <td> <label for="percentagessc"> Percentage :</label></td>
+                            <td><input type="text" id="percentagessc" name="percentage" placeholder="ex.70.36" value="">
+                            <div id="ssc_error3" style="color: red;"></div></td> 
+
+                        </tr>
+                        <tr> 
+                            <td><label for="Hsc"> Hsc result</label></td> 
+                        </tr>
+                        <tr>
+                            <input type="hidden" name="edudetailid"  value="">
+
+                            <td> <label for="boardname">Name of board :</label></td> 
+                            <td><input type="text" id="boardname2" class="boardname" name="nob" value="" placeholder="ex.GHSEB"><span id="hsc_error1" style="color: red;"></span></td> 
+                            </td> 
+                            <td> <label for="passingyearssc"> Passing Year :</label></td>
+                            <td><input type="text" id="passingyearhsc" name="passingyear" class="year" placeholder="ex.2014" value=""><div id="hsc_error2" style="color: red;"></div></td> 
+                            <td> <label for="percentagessc"> Percentage :</label></td>
+                            <td><input type="text" id="percentagehsc" name="percentage" placeholder="ex.70.36" value=""><div id="hsc_error3" style="color: red;"></div></td> 
+                        </tr>
+                        <tr> 
+                            <td><label for="Bachelor">Bachelor degree</label></td> 
+                        </tr>
+                        <tr>
+                            <input type="hidden" name="edudetailid"  value="">
+
+                            <td> <label for="coursename">Course Name :</label></td> 
+                            <td><input type="text" id="coursename" class="boardname" name="nob" value="" placeholder="ex.B.Tech"><span id="be_error1" style="color: red;"></span> </td> 
+                            <td> <label for="passingyearbachelor"> Passing Year :</label></td>
+                            <td><input type="text" id="passingyearbachelor" name="passingyear" class="year" value="" placeholder="ex.2014"><div id="beyear_error2" style="color: red;"></div></td> 
+                            <td> <label for="percentagebachelor"> Percentage :</label></td>
+                            <td><input type="text" id="percentagebachelor" name="percentage" value="" placeholder="ex.70.35"><div id="beyearper_error2" style="color: red;"></div></td> 
+                        </tr>
+                        <tr> 
+                            <td><label for="Master">Master degree</label></td> 
+                        </tr>
+                        <tr>
+                            <input type="hidden" name="edudetailid"  value="">
+
+                            <td> <label for="coursename">Course Name :</label></td> 
+                            <td><input type="text" id="coursename2" name="nob" value="" placeholder="ex.M.Tech"> <span id="me_error1" style="color: red;"></span> </td> 
+                            <td> <label for="passingyearbachelor"> Passing Year :</label></td>
+                            <td><input type="text" id="passingyearme" name="passingyear" value="" placeholder="ex.2014"><span id="me_error2" style="color: red;"></span></td> 
+                            <td> <label for="percentagebachelor"> Percentage :</label></td>
+                            <td><input type="text" id="percentageme" name="percentage" value="" placeholder="ex.70.35"><span id="me_error3" style="color: red;"></span></td> 
+                        </tr>
+                    </table>
+            
+                </fieldset>
+            </div>
+            <div class="workdwtailsdiv" id="workdwtailsdiv" style="display: none;">
+                <fieldset style="width: 50%;">
+                    <table>
+                        <legend><b>Work Experience</b></legend>
+                        <tr>
+                            <input type="hidden" name="workid"  value="">
+                            <td><label for="companyname1">Company Name</label></td>
+                            <td><input type="text" name="companyname" id="companyname1" value=""><div id="com1_err1" style="color: red;"></div></td>
+                            <td><label for="designation1">Designation</label></td>
+                            <td><input type="text" name="designation" value="" id="designation1"><div id="des1_err1" style="color: red;"></div></td>
+                            <td><label for="from">From</label></td>
+                            <td><input type="text" name="cfrom" id="from1" value="" placeholder="2001-11-19"><div id="from1_err1" style="color: red;"></div></td>
+                            <td><label for="to">To</label></td>
+                            <td><input type="text" name="cto" id="to1" value="" placeholder="2001-11-19" ><div id="to1_err1" style="color: red;"></div></td>
+                        </tr>
+                        <tr>
+                            <input type="hidden" name="workid"  value="">
+
+                            <td><label for="companyname1">Company Name</label></td>
+                            <td><input type="text" name="companyname" id="companyname2" value=""><div id="com_err2" style="color: red;"></div></td>
+                            <td><label for="designation1">Designation</label></td>
+                            <td><input type="text" name="designation" id="designation2" value=""><div id="des_err2" style="color: red;"></div></td>
+                            <td><label for="from">From</label></td>
+                            <td><input type="text" name="cfrom" id="from2" value="" placeholder="2001-11-19"><div id="from1_err2" style="color: red;"></div></td>
+                            <td><label for="to">To</label></td>
+                            <td><input type="text" name="cto" id="to2" value="" placeholder="2001-11-19" ><div id="to1_err2" style="color: red;"></div></td>
+                        </tr>
+                        <tr>
+                            <input type="hidden" name="workid"  value="">
+
+                            <td><label for="companyname1">Company Name</label></td>
+                            <td><input type="text" name="companyname"  value="" id="companyname3"><div id="com1_err3" style="color: red;"></div></td>
+                            <td><label for="designation1">Designation</label></td>
+                            <td><input type="text" name="designation" id="designation3" value=""><div id="des1_err3" style="color: red;"></div></td>
+                            <td><label for="from">From</label></td>
+                            <td><input type="text" name="cfrom" id="from3" value="" placeholder="2001-11-19"><div id="from1_err3" style="color: red;"></div></td>
+                            <td><label for="to">To</label></td>
+                            <td><input type="text" name="cto" id="to3" value=""  placeholder="2001-11-19"><div id="to1_err3" style="color: red;"></div></td>
+                        </tr>
+            
+                    </table>
+                </fieldset>
+            </div>
+            <div class="langdetailsdiv" id="langdetailsdiv" style="display: none;">
+                <fieldset style="width: 50%;">
+                    <table>
+                        <legend><b>Language Known</b></legend>
+                        <tr>
+                            <input type="hidden" name="lanid"  value="">
+
+                            <td><input type="checkbox" id="hindi" name="language[]" value="hindi"></td>
+                            <td><label for="hindi">Hindi</label></td>
+                            <td><input type="checkbox" id="read" name="hindi_read" class="checkbox" value="1" disabled></td>
+                            <td><label for="read">read</label></td>
+                            <td><input type="checkbox" id="write" name="hindi_write" class="checkbox" value="1" disabled></td>
+                            <td><label for="write">write</label></td>
+                            <td><input type="checkbox" id="speak" name="hindi_speak" class="checkbox" value="1" disabled></td>
+                            <td><label for="speak">speak</label></td>
+                            <td><div id="hindierror" style="color: red;"></div></td>
+                        </tr>
+                        <tr>
+                            <input type="hidden" name="lanid"  value="">
+
+                            <td><input type="checkbox" id="english" name="language[]" value="english"></td>
+                            <td><label for="english">English</label></td>
+                            <td><input type="checkbox" id="enread" class="en" name="english_read" value="1" disabled></td>
+                            <td><label for="enread">read</label></td>
+                            <td><input type="checkbox" id="enwrite" class="en" name="english_write" value="1" disabled>
+                            <td><label for="enwrite">write</label></td>
+                            <td><input type="checkbox" id="enspeak" class="en" name="english_speak" value="1" disabled>
+                            <td><label for="enspeak">speak</label></td>
+                            <td><div id="engerror" style="color: red;"></div></td>
+                        </tr>
+                        <tr>
+                            <input type="hidden" name="lanid"  value="">
+
+                            <td><input type="checkbox" id="gujarati" name="language[]" value="gujarati"></td>
+                            <td><label for="gujarati">Gujarati</label></td>
+                            <td><input type="checkbox" id="gjread" class="gj"  name="gujarati_read" value="1" disabled></td>
+                            <td><label for="gjread">read</label></td>
+                            <td><input type="checkbox" id="gjwrite" class="gj" name="gujarati_write"  value="1" disabled></td>
+                            <td><label for="gjwrite">write</label></td>
+                            <td><input type="checkbox" id="gjspeak" class="gj" name="gujarati_speak"  value="1" disabled></td>
+                            <td><label for="gjspeak">speak</label></td>
+                            <td><div id="gjerror" style="color: red;"></div></td>
+                        </tr>
+
+                    </table>
+                </fieldset>
+            </div>
+            <div class="techdetailsdiv" id="techdetailsdiv" style="display: none;">
+                <fieldset style="width: 50%;">
+                    <table>
+                        <legend><b>Technology You Known</b></legend>
+                        <tr>
+                            <input type="hidden" name="techid"  value="">
+
+                            <td><input type="checkbox" id="php" name="technology[]" value="php"></td>
+                            <td><label for="php">php</label></td>
+                            <td><input type="radio" id="beginer1" class="tech" name="phpkn" value="beginer" disabled ></td>
+                            <td><label for="beginer1">beginer</label></td>
+                            <td><input type="radio" id="mideator1" class="tech" name="phpkn" value="mideator" disabled></td>
+                            <td><label for="mideator1">mideator</label></td>
+                            <td><input type="radio" id="expert1" class="tech" name="phpkn" value="expert" disabled></td>
+                            <td><label for="expert1">expert</label></td>
+                            <td><div id="phperr" style="color: red;"></div></td>
+                        </tr>
+                        <tr>
+                            <input type="hidden" name="techid"  value="">
+
+                            <td><input type="checkbox" id="mysql" name="technology[]" value="mysql"></td>
+                            <td><label for="mysql">Mysql</label></td>
+                            <td><input type="radio" id="beginer2" class="tech2" name="mysqlkn" value="beginer" disabled></td>
+                            <td><label for="beginer2">beginer</label></td>
+                            <td><input type="radio" id="mideator2" class="tech2" name="mysqlkn"  value="mideator" disabled></td>
+                            <td><label for="mideator2">mideator</label></td>
+                            <td><input type="radio" id="expert2" class="tech2" name="mysqlkn" value="expert" disabled></td>
+                            <td><label for="expert2">expert</label></td>
+                            <td><div id="mysqlerr" style="color: red;"></div></td>
+                        </tr>
+                        <tr>
+                            <input type="hidden" name="techid"  value="">
+
+                            <td><input type="checkbox" id="laravel" name="technology[]" value="laravel"></td>
+                            <td><label for="laravel">Laravel</label></td>
+                            <td><input type="radio" id="beginer3" class="tech3" name="laravelkn"  value="beginer" disabled></td>
+                            <td><label for="beginer3">beginer</label></td>
+                            <td><input type="radio" id="mideator3" class="tech3" name="laravelkn"  value="mideator" disabled></td>
+                            <td><label for="mideator3">mideator</label></td>
+                            <td><input type="radio" id="expert3" class="tech3" name="laravelkn"  value="expert" disabled></td>
+                            <td><label for="expert3">expert</label></td>
+                            <td><div id="laravelerr" style="color: red;"></div></td>
+                        </tr>    
+                        <tr>
+                            <input type="hidden" name="techid"  value="">
+
+                            <td><input type="checkbox" id="oracle" name="technology[]" value="oracle"></td>
+                            <td><label for="oracle">Oracle</label></td>
+                            <td><input type="radio" id="beginer4" class="tech4" name="oraclekn" value="beginer" disabled></td>
+                            <td><label for="beginer4">beginer</label></td>
+                            <td><input type="radio" id="mideator4" class="tech4" name="oraclekn" value="mideator" disabled></td>
+                            <td><label for="mideator4">mideator</label></td>
+                            <td><input type="radio" id="expert4" class="tech4" name="oraclekn" value="expert" disabled></td>
+                            <td><label for="expert4">expert</label></td>
+                            <td><div id="oracleerr" style="color: red;"></div></td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            <div class="referencediv" id="referencediv" style="display: none;">
+                <fieldset style="width: 50%;">
+                    <button onclick="addrow(event)">+</button>
+                    <button onclick="removerow(event)">-</button>
+                        <table id="references">
+
+                            <legend><b>Reference Contact</b></legend>
+                            <tr>
+                                <input type="hidden" name="refid"  value="">
+
+                                <td><label for="companyname">Name </label></td>
+                                <td><input type="text" id="referencename" name="referencename" class="checkfield" placeholder="ex.esparkbiz pvt. ltd." value=""><div id="refname_error" style="color: red;"></div></td>
+                                <td><label for="contactnumber">Contact Number</label></td>
+                                <td><input type="text" id="contactnumber" name="contactnumber" class="checkfield" placeholder="only 10 digit" value=""><div id="refcon_error" style="color: red;"></div>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td><label for="relation">Relation </label></td>
+                                <td><input type="text" id="relation1" name="relation" class="checkfield" value=""><div id="refrelaerr3" style="color: red;"></div><br></td>
+                            </tr>
+                            <tr id="referencetr2">
+                                <input type="hidden" name="refid"  value="">
+
+                                <td><label for="companyname">Name </label></td>
+                                <td><input type="text" id="referencename2" name="referencename" class="checkfield" placeholder="ex.esparkbiz pvt. ltd." value=""><div id="refname_error2" style="color: red;"></div></td>
+                                <td><label for="contactnumber">Contact Number</label></td>
+                                <td><input type="text" id="contactnumber2" name="contactnumber" class="checkfield" placeholder="only 10 digit" value=""><div id="refcon_error2" style="color: red;"></div>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td><label for="relation">Relation </label></td>
+                                <td><input type="text" id="relation2" name="relation" class="checkfield" value=""><div id="refrelaerr3_2" style="color: red;"></div><br></td>
+                            </tr>
+                        </table>
+                </fieldset>
+            </div>
+            <div class="preferencediv" id="preferencediv" style="display: none;">
+                <fieldset style="width: 50%;">
+                    <table class="table">
+                        <legend><b>preferences</b></legend>
+                        <tr>
+                            <input type="hidden" name="preferenceid"  value="">
+                            <td><label for="preferdlocation">Preferd Location:</label></td>
+                            <td><select name="preferdlocation" id="preferdlocation" multiple>
+                            <option value="select" selected>select</option>
+
+                            <option value="ahmedabad">Ahmedabad</option>
+                            <option value="baroda">Baroda</option>
+                            <option value="suarat">Surat</option>
+                            </select><div id="prlerr" style="color: red;"></div></td>
+                            <td><label for="noticeperiod">Notice Period </label></td>
+                            <td><input type="text" id="noticeperiod" name="noticeperiod" value=""><div id="nperr" style="color: red;"></div></td>
+
+                            <td><label for="department">Department</label></td>
+                            <td><select name="department" id="department">
+                            <option value="select">select</option>
+                            <option value="development">Development</option>
+                            <option value="design">Design</option>
+                            <option value="marketing">Marketing</option>
+                            </select><div id="dperr" style="color: red;"></div></td>
+                            <td><label for="expectedctc">Expected CTC</label></td>
+                            <td><input type="text" id="expectedctc" name="expectedctc" placeholder="2500000" value=""><div id="ecerr" style="color: red;"></div></td>
+                            <td><label for="currentctc">Current CTC </label></td>
+                            <td><input type="text" id="currentctc" name="currentctc" placeholder="2000000" value=""><div id="ccerr" style="color: red;"></div></td>
+                        </tr>
+                    </table>
+                    
+                </fieldset>
+            </div>
+            
+
+        </center>   
+        <div class="submitclass" style="justify-content: center;
+        display: flex;">
+
+
+
+</div>
+</form>
+<a href="{% url 'logout' %}">Logout</a>
+<div class="np" style="text-align: center;">
+    <input type="button" value="previous" id="pre" onclick="previous()" disabled>
+    <input type="button" value="next" id="nex" onclick="next()">
+    <input type="button" class="btn btn-primary" value="submit" id="submit" onclick="add()" hidden>
+
+    </div>
+
+</body>
+</html>

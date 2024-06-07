@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block title%}
+News
+{%endblock%}
+
+{%block body%}
+<h1>this is our latest news page</h1>
+
+<h2>{{data.author}}</h2>
+<h3>{{data.title}}</h3>
+<p>{{data.description}}</p>
+
+<!-- {%for i in list%}
+<ul>
+    <li>{{i}}</li>
+</ul>
+{%endfor%}
+
+
+
+{% if mynum == 50 %}
+    <h1>condition is true</h1>
+{%else%}
+<h1>condition is false </h1>
+
+{%endif%} -->
+
+{%endblock%}
