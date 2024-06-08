@@ -31,10 +31,16 @@ class EmployeeBasicDetails(models.Model):
         return f'{self.id - self.first_name}'
 
 class EducationDetail(models.Model):
-    boardname=models.CharField(max_length=50)
+    BOARD_CHOICE = (
+			("ssc","ssc"),
+			("hsc","hsc"),
+			("bachelor","bachelor"),
+			("master","master")
+		)
+    boardname=models.CharField(max_length=50,choices=BOARD_CHOICE)
     university=models.CharField(max_length=50)
     passingyear=models.IntegerField()
-    passingyear=models.FloatField()
+    percentage=models.FloatField()
     user_id=models.ForeignKey(User,on_delete=models.CASCADE)
 
 class WorkExperience(models.Model):
@@ -45,6 +51,12 @@ class WorkExperience(models.Model):
     user_id=models.ForeignKey(User,on_delete=models.CASCADE)
 
 class LanguageMaster(models.Model):
+    # languages = (
+	# 		("hindi","hindi"),
+	# 		("english","english"),
+	# 		("gujarati","gujarati")
+			
+	# 	)
     lanvalue=models.CharField(max_length=50)
     readfluency=models.BooleanField()
     writefluency=models.BooleanField()
@@ -52,8 +64,13 @@ class LanguageMaster(models.Model):
     user_id=models.ForeignKey(User,on_delete=models.CASCADE)
 
 class TechnologyMaster(models.Model):
-    techalue=models.CharField(max_length=50)
-    techproficiency=models.BooleanField()
+    technology_CHOICE = (
+			("beginer","beginer"),
+			("mediator","mediator"),
+			("expert","expert")
+		)
+    techvalue=models.CharField(max_length=50)
+    techproficiency=models.CharField(choices=technology_CHOICE)
     user_id=models.ForeignKey(User,on_delete=models.CASCADE)
 
 class ReferenceContact(models.Model):
@@ -63,14 +80,30 @@ class ReferenceContact(models.Model):
     user_id=models.ForeignKey(User,on_delete=models.CASCADE)
 
 class preferences(models.Model):
-    preferencelocation=models.CharField(max_length=50)
-    noticeperiod=models.IntegerField(null=True,blank=True)
-    expectedctc=models.FloatField(null=True,blank=True)
-    currentctc=models.FloatField(null=True,blank=True)
-    department=models.CharField(null=True,blank=True)
+    locationchoice = (
+			("ahmedabad","ahmedabad"),
+			("baroda","baroda"),
+			("valsad","valsad")
+			
+		)
+    departmentchoice = (
+			("development","development"),
+			("design","design"),
+			("networking","networking")
+			
+		)
+    preferencelocation=models.CharField(max_length=50,choices=locationchoice)
+    noticeperiod=models.IntegerField()
+    expectedctc=models.FloatField()
+    currentctc=models.FloatField()
+    department=models.CharField(max_length=50,choices=departmentchoice)
 
+class SelectMaster(models.Model):
+    selectvalue=models.CharField(max_length=30)
 
+class OptionMaster(models.Model):
+    optionvalue=models.CharField(max_length=30)
+    select_id=models.ForeignKey(SelectMaster,on_delete=models.CASCADE)
 
-    
 
 

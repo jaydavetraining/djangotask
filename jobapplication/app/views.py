@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 # Create your views here.
-from .forms import UserRegisterForm,LoginForm,EmployeeBasicDetailsForms
+from .forms import UserRegisterForm,LoginForm,EmployeeBasicDetailsForms,EducationDetailForms,WorkExperienceForms,LanguageMasterForms,ReferenceContactForms,preferencesForms,TechnologyMasterForms
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -80,6 +80,12 @@ def signout(request):
 def home(request):
     if request.method=="GET":
         context={
-            "form":EmployeeBasicDetailsForms()
+            "form":EmployeeBasicDetailsForms(),
+            "form2":EducationDetailForms(),
+            "form3":WorkExperienceForms(),
+            "form4":LanguageMasterForms(),
+            "form5":ReferenceContactForms(),
+            "form6":preferencesForms(),
+            "form7":TechnologyMasterForms()
         }
-        return render(request,'job.html',context)
+    return render(request,'job.html',context)

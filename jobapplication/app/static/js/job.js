@@ -1,3 +1,50 @@
+function addrowdata(){
+    console.log("++++++++++++")
+   
+    let numb = document.getElementById("education").children.length;
+    if (numb<4){
+        let edutable=document.getElementsByClassName("eduaction")[0];
+        let eduadd=document.getElementsByClassName("edu")[0];
+        let column=eduadd.cloneNode(true);
+        edutable.appendChild(column);
+    }
+}
+function removerow(){
+    let edutable=document.getElementsByClassName("eduaction")[0];
+    let eduremove=document.getElementsByClassName("edu").length;
+    if(eduremove>1){
+        edutable.removeChild(edutable.lastElementChild)
+    }
+}
+
+function addrowdatawork(){
+    let workdatatable=document.getElementsByClassName("worktable")[0];
+    let workadd=document.getElementsByClassName("work")[0];
+    let column=workadd.cloneNode(true);
+    workdatatable.appendChild(column);
+}
+function removerowwork(){
+    let workdatatable=document.getElementsByClassName("worktable")[0];
+    let workremove=document.getElementsByClassName("work").length;
+    if(workremove>1){
+        workdatatable.removeChild(workdatatable.lastElementChild)
+    }
+}
+
+
+function addrowdatareference(){
+    let referencedatatable=document.getElementsByClassName("referencetable")[0];
+    let referenceadd=document.getElementsByClassName("reference")[0];
+    let column=referenceadd.cloneNode(true);
+    referencedatatable.appendChild(column);
+}
+function removerowreference(){
+    let referencedatatable=document.getElementsByClassName("referencetable")[0];
+    let referenceremove=document.getElementsByClassName("reference").length;
+    if(referenceremove>1){
+        referencedatatable.removeChild(referencedatatable.lastElementChild)
+    }
+}
 
 count=0
 function next(){
@@ -98,5 +145,4 @@ function previous(){
 
         break;
         }}
-        
         

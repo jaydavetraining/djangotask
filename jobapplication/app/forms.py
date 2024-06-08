@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User,EmployeeBasicDetails
+from .models import User,EmployeeBasicDetails,EducationDetail,WorkExperience,LanguageMaster,ReferenceContact,preferences,TechnologyMaster
 from django.core.exceptions import ValidationError
 
 
@@ -112,11 +112,11 @@ class EmployeeBasicDetailsForms(forms.ModelForm):
             }),
 			'designation':forms.TextInput(attrs={
 				'class':'form-control',
-				'placeholder':'Enter ypur surname'
+				'placeholder':'Enter ypur designation'
             }),
-			'phone':forms.TextInput(attrs={
+			'phone':forms.NumberInput(attrs={
 				'class':'form-control',
-				'placeholder':'Enter ypur surname'
+				'placeholder':'Enter ypur phone number'
             }),
 			'gender':forms.RadioSelect(choices=CHOICES),
 			'email':forms.EmailInput(attrs={
@@ -145,13 +145,111 @@ class EmployeeBasicDetailsForms(forms.ModelForm):
 				'class':'form-control',
 				'placeholder':'Enter your area zipcode'
             }),
-			'birthday':forms.TextInput(attrs={
+			'birthday':forms.DateInput(attrs={
 				'class':'form-control',
 				'placeholder':'Enter your state'
             })
 		
         }
       
+class EducationDetailForms(forms.ModelForm):
 
 
-	
+	class Meta:
+		model=EducationDetail
+		fields='__all__'
+		widgets={
+			'university':forms.TextInput(attrs={
+				'class':'form-control',
+				'placeholder':'Enter your university'
+            }),
+			'passingyear':forms.NumberInput(attrs={
+				'class':'form-control',
+				'placeholder':'Enter your passingyear'
+            }),
+			'percentage':forms.NumberInput(attrs={
+				'class':'form-control',
+				'placeholder':'Enter your percentge'
+            })
+			
+        }
+
+class WorkExperienceForms(forms.ModelForm):
+	class Meta:
+		model=WorkExperience
+		fields='__all__'
+		widgets={
+			'compname':forms.TextInput(attrs={
+				'class':'form-control',
+				'placeholder':'Enter your company name'
+            }),
+			'designation':forms.TextInput(attrs={
+				'class':'form-control',
+				'placeholder':'Enter your designation'
+            }),
+			'durationfrom':forms.DateInput(attrs={
+				'class':'form-control',
+				'placeholder':'Enter your from'
+            }),
+			'durationto':forms.DateInput(attrs={
+				'class':'form-control',
+				'placeholder':'Enter your to'
+            })
+        }
+
+class LanguageMasterForms(forms.ModelForm):
+	class Meta:
+		model=LanguageMaster
+		fields='__all__'
+
+
+class ReferenceContactForms(forms.ModelForm):
+	class Meta:
+		model=ReferenceContact
+		fields='__all__'
+		widgets={
+		'name':forms.TextInput(attrs={
+			'class':'form-control',
+			'placeholder':'Enter reference person name'
+		}),
+		'phone':forms.NumberInput(attrs={
+				'class':'form-control',
+				'placeholder':'Enter ypur phone number'
+            }),
+		'relation':forms.TextInput(attrs={
+			'class':'form-control',
+		}),
+		}
+
+class preferencesForms(forms.ModelForm):
+	class Meta:
+		model=preferences
+		fields='__all__'
+		widgets={
+		'preferencelocation':forms.SelectMultiple(),
+		'noticeperiod':forms.NumberInput(attrs={
+			'class':'form-control',
+			'placeholder':'enter number',
+			'style':"width:156px"
+		}),
+    				
+		'expectedctc':forms.NumberInput(attrs={
+			'class':'form-control',
+			'placeholder':'enter number',
+			'style':"width:156px"
+		}),
+		'currentctc':forms.NumberInput(attrs={
+			'class':'form-control',
+			'placeholder':'enter number',
+			'style':"width:156px"
+		})
+		}
+		
+class TechnologyMasterForms(forms.ModelForm):
+	class Meta:
+		model=TechnologyMaster
+		fields='__all__'
+		widgets={
+			'techvalue':forms.CheckboxInput(),
+			'techproficiency':forms.RadioSelect()
+		}
